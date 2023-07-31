@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragments.AddGroupFragment">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#011627"
+        android:elevation="3dp"
+        app:navigationIcon="@drawable/baseline_arrow_back_24"
+        app:title="New group"
+        app:titleTextColor="@color/white" />
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:textColorHint="@color/transparent"
+        android:textColor="@color/blue"
+        android:layout_height="wrap_content"
+        android:hint="Enter group name.."
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Group Members"
+        android:textColor="@color/blue"
+        android:textStyle="normal"
+        android:textSize="18sp"
+        android:gravity="center" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:listitem="@layout/rv_item"
+            android:clickable="true"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:focusable="true" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_add_new_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/baseline_check_24"
+            android:backgroundTint="@color/blue"
+            app:borderWidth="0dp"
+            app:tint="@color/white"
+            android:padding="0dp"
+            android:layout_margin="10dp" />
+
+    </FrameLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

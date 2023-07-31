@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/authFragment">
+
+
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="uz.abbosbek.chatappcodial.fragments.AuthFragment"
+        android:label="fragment_auth"
+        tools:layout="@layout/fragment_auth" />
+    <fragment
+        android:id="@+id/groupChatFragment"
+        android:name="uz.abbosbek.chatappcodial.fragments.GroupChatFragment"
+        android:label="fragment_group_chat"
+        tools:layout="@layout/fragment_group_chat" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="uz.abbosbek.chatappcodial.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addGroupFragment"
+            app:destination="@id/addGroupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="uz.abbosbek.chatappcodial.fragments.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/addGroupFragment"
+        android:name="uz.abbosbek.chatappcodial.fragments.AddGroupFragment"
+        android:label="fragment_add_group"
+        tools:layout="@layout/fragment_add_group" />
+</navigation>

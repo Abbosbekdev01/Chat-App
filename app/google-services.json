@@ -1,0 +1,135 @@
+{
+  "project_info": {
+    "project_number": "19233050950",
+    "firebase_url": "https://realtimedatabase-cfe84-default-rtdb.firebaseio.com",
+    "project_id": "realtimedatabase-cfe84",
+    "storage_bucket": "realtimedatabase-cfe84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19233050950:android:0187027f8ab0cc184cd547",
+        "android_client_info": {
+          "package_name": "uz.abbosbek.chatapp1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19233050950-lcp6svlhl9v0jmr190k52rpkv7gqpq4o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.abbosbek.chatapp1",
+            "certificate_hash": "e4e2718186ee7f64e9db828d4e815ef6376ceec5"
+          }
+        },
+        {
+          "client_id": "19233050950-n3aeu2pnv1sp23thnj3phh71q2a9scqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD75DamydOg8TQ8U4ymGrqZF5aHzp9Kyx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19233050950-n3aeu2pnv1sp23thnj3phh71q2a9scqt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19233050950:android:5cf044bb8b1ee78e4cd547",
+        "android_client_info": {
+          "package_name": "uz.abbosbek.chatappcodial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19233050950-n3aeu2pnv1sp23thnj3phh71q2a9scqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD75DamydOg8TQ8U4ymGrqZF5aHzp9Kyx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19233050950-n3aeu2pnv1sp23thnj3phh71q2a9scqt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19233050950:android:cd3f832e706cc9534cd547",
+        "android_client_info": {
+          "package_name": "uz.abbosbek.firebasedatabase_codial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19233050950-n3aeu2pnv1sp23thnj3phh71q2a9scqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD75DamydOg8TQ8U4ymGrqZF5aHzp9Kyx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19233050950-n3aeu2pnv1sp23thnj3phh71q2a9scqt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19233050950:android:00b72668144ed6f94cd547",
+        "android_client_info": {
+          "package_name": "uz.abbosbek.myrealtimedatabse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19233050950-n3aeu2pnv1sp23thnj3phh71q2a9scqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD75DamydOg8TQ8U4ymGrqZF5aHzp9Kyx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19233050950-n3aeu2pnv1sp23thnj3phh71q2a9scqt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
