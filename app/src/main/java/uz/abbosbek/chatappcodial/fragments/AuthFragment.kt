@@ -1,7 +1,9 @@
 package uz.abbosbek.chatappcodial.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +12,12 @@ import android.widget.Toast
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.messaging.FirebaseMessaging
@@ -25,6 +30,8 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+
+private const val TAG = "AuthFragment"
 
 class AuthFragment : Fragment() {
 
@@ -44,7 +51,8 @@ class AuthFragment : Fragment() {
     lateinit var auth: FirebaseAuth
     private lateinit var databse: FirebaseDatabase
     private lateinit var reference: DatabaseReference
-    private var token = ""
+    private var RC_SIGN_IN = 1
+    private lateinit var googleSigningClient: GoogleSignInClient
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,16 +62,8 @@ class AuthFragment : Fragment() {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail().build()
 
-        val googleSigningClient = GoogleSignIn.getClient(requireActivity(), gso)
+        googleSigningClient = GoogleSignIn.getClient(requireActivity(), gso)
         auth = FirebaseAuth.getInstance()
-        databse = FirebaseDatabase.getInstance()
-        reference = databse.getReference("users")
-
-
-
-        MySharedPreference.init(requireContext())
-
-
         if (auth.currentUser != null) {
             USER = User(
                 auth.uid,
@@ -83,13 +83,62 @@ class AuthFragment : Fragment() {
                     .setPopUpTo(findNavController().currentDestination?.id ?: 0, true).build()
             )
         }
+        databse = FirebaseDatabase.getInstance()
+        reference = databse.getReference("users")
 
+        MySharedPreference.init(requireContext())
         binding.btnGoogle.setOnClickListener {
-            startActivityForResult(googleSigningClient.signInIntent, 1)
+            signIn()
         }
 
         return binding.root
     }
 
+    private fun signIn() {
+        val signInIntent = googleSigningClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                Log.d(TAG, "onActivityResult:" + account.id)
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                Log.d(TAG, "onActivityResult:", e)
+            }
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "firebaseAuthWithGoogle: Success")
+                    val user = User(
+                        auth.currentUser?.uid,
+                        auth.currentUser?.displayName,
+                        auth.currentUser?.photoUrl.toString(),
+                        auth.currentUser?.email,
+                        auth.currentUser?.tenantId,
+                        auth.currentUser?.phoneNumber,
+                        auth.currentUser?.getIdToken(true).toString()
+                    )
+                    Toast.makeText(requireContext(), "${user.email}", Toast.LENGTH_SHORT).show()
+                } else {
+                    Log.d(TAG, "firebaseAuthWithGoogle: ${task.exception}")
+                    Toast.makeText(
+                        requireContext(),
+                        "${task.exception?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+            }
+    }
 
 }
